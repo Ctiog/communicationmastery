@@ -1,0 +1,19 @@
+{
+  "name": "Communication Mastery",
+  "short_name": "ComMastery",
+  "description": "Programme pratique de communication sur 12 semaines.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f8fb",
+  "theme_color": "#14253d",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

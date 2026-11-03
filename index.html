@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14253d">
+  <meta name="description" content="Formation pratique de 12 semaines en communication. Leçons, exercices, ressources et coach IA.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Communication Mastery</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">CM</div><div><strong>Communication</strong><span>MASTERY</span></div></div>
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav-item active" data-view="dashboard"><span>⌂</span> Tableau de bord</button>
+        <button class="nav-item" data-view="program"><span>▤</span> Mon programme</button>
+        <button class="nav-item" data-view="coach"><span>✦</span> Coach IA</button>
+        <button class="nav-item" data-view="resources"><span>↗</span> Ressources</button>
+        <button class="nav-item" data-view="journal"><span>▧</span> Mon journal</button>
+        <button class="nav-item" data-view="settings"><span>⚙</span> Réglages</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="mini-label">TON PARCOURS</div><div class="sidebar-progress"><div id="sideProgressBar"></div></div><p id="sideProgressText">0 / 60 leçons terminées</p></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+        <div><span class="eyebrow" id="todayLabel">TON ESPACE D'APPRENTISSAGE</span><h1 id="pageTitle">Tableau de bord</h1></div>
+        <div class="top-actions"><span class="streak">✦ <b id="streakCount">0</b> jour de pratique</span><button class="avatar" data-view="settings" aria-label="Réglages">CM</button></div>
+      </header>
+      <section id="view-dashboard" class="view active">
+        <div class="hero">
+          <div class="hero-copy"><span class="eyebrow light">TON PROCHAIN NIVEAU COMMENCE ICI</span><h2>La communication<br><em>est une compétence.</em></h2><p>12 semaines pour parler avec clarté, écouter avec intention et créer plus d'impact.</p><button class="btn btn-light" id="continueBtn">Continuer mon parcours <span>→</span></button></div>
+          <div class="hero-orbit"><div class="orbit-ring"></div><div class="orbit-core">CM</div><div class="orbit-dot dot1"></div><div class="orbit-dot dot2"></div><div class="orbit-dot dot3"></div></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon purple">▤</span><span class="stat-label">Leçons terminées</span><strong id="completedStat">0 <small>/ 60</small></strong><div class="stat-foot">Ton rythme, ta progression</div></article>
+          <article class="stat-card"><span class="stat-icon mint">◷</span><span class="stat-label">Temps de formation</span><strong id="minutesStat">0 <small>min</small></strong><div class="stat-foot">Temps estimé des leçons validées</div></article>
+          <article class="stat-card"><span class="stat-icon amber">✦</span><span class="stat-label">Semaine actuelle</span><strong id="weekStat">1 <small>/ 12</small></strong><div class="stat-foot" id="weekThemeStat">Les fondations</div></article>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">UNE ÉTAPE À LA FOIS</span><h2>Reprendre là où tu en es</h2></div><button class="text-button" data-view="program">Tout le programme →</button></div>
+        <article class="continue-card" id="nextLessonCard"></article>
+        <div class="section-heading"><div><span class="eyebrow">TON PARCOURS</span><h2>Les 12 semaines</h2></div></div>
+        <div class="week-overview" id="weekOverview"></div>
+      </section>
+      <section id="view-program" class="view">
+        <div class="intro-panel"><div><span class="eyebrow">PLAN D'APPRENTISSAGE</span><h2>12 semaines. 60 leçons.<br>Une nouvelle façon de communiquer.</h2><p>Chaque leçon comprend une idée clé et une pratique guidée. Enregistre tes observations et coche les leçons au fil du parcours.</p></div><div class="intro-badge">12<span>SEM.</span></div></div>
+        <div class="program-layout"><div class="week-list" id="weekList"></div><div class="lesson-panel" id="lessonPanel"><div class="empty-state">Choisis une semaine pour explorer les leçons.</div></div></div>
+      </section>
+      <section id="view-coach" class="view">
+        <div class="coach-intro"><span class="eyebrow light">PRATIQUE GUIDÉE</span><h2>Le Coach <em>IA</em></h2><p>Entraîne-toi à répondre, négocier, présenter ou gérer une conversation délicate. Reçois un retour structuré.</p><div class="coach-disclaimer">Le mode IA nécessite une clé API compatible configurée dans Réglages. Sans clé, le coach propose des exercices guidés hors ligne.</div></div>
+        <div class="coach-grid"><div class="coach-left"><label for="coachScenario">Choisis ta mise en situation</label><select id="coachScenario"><option value="smalltalk">Conversation avec une nouvelle personne</option><option value="work">Présenter une idée au travail</option><option value="conflict">Gérer un désaccord</option><option value="negotiation">Négocier avec un client</option><option value="speech">Prise de parole improvisée</option><option value="custom">Mon propre scénario</option></select><textarea id="customScenario" placeholder="Décris ta situation…" hidden></textarea><button class="btn btn-primary" id="startCoach">Lancer l'exercice →</button><div class="coach-tip" id="coachTip">Conseil : réponds naturellement. Le but est de progresser, pas d'être parfait.</div></div><div class="chat-card"><div class="chat-header"><div class="coach-avatar">✦</div><div><strong>Session de pratique</strong><span id="coachStatus">Prête à commencer</span></div><button class="text-button" id="clearChat">Réinitialiser</button></div><div class="chat-messages" id="chatMessages"><div class="chat-empty"><div>✦</div><strong>À toi de jouer.</strong><p>Choisis un scénario pour commencer ta simulation.</p></div></div><form class="chat-form" id="coachForm"><textarea id="coachInput" rows="2" placeholder="Écris ta réponse…" disabled></textarea><button class="send-btn" type="submit" disabled aria-label="Envoyer">↑</button></form></div></div>
+      </section>
+      <section id="view-resources" class="view">
+        <div class="intro-panel"><div><span class="eyebrow">APPRENDRE AUPRÈS DE SOURCES FIABLES</span><h2>Des idées solides.<br>Des pratiques concrètes.</h2><p>Une sélection de ressources externes à consulter en complément des leçons.</p></div><div class="intro-badge">↗<span>GUIDES</span></div></div>
+        <div class="resource-grid" id="resourceGrid"></div>
+        <div class="note-panel"><strong>À garder en tête</strong><p>Les techniques de communication sont des outils, pas des règles absolues. Le langage corporel dépend du contexte et de la culture. Privilégie l'écoute, la curiosité et l'authenticité.</p></div>
+      </section>
+      <section id="view-journal" class="view">
+        <div class="intro-panel"><div><span class="eyebrow">RÉFLEXION & PROGRESSION</span><h2>Ton journal<br>de communication.</h2><p>Note ce que tu as testé, ce qui a bien fonctionné et ce que tu souhaites ajuster.</p></div><div class="intro-badge">✎<span>NOTES</span></div></div>
+        <div class="journal-layout"><div class="journal-editor"><label for="journalDate">Date</label><input type="date" id="journalDate"><label for="journalTitle">Titre de l'entrée</label><input type="text" id="journalTitle" placeholder="Ex. : Une conversation plus fluide"><label for="journalBody">Mes observations</label><textarea id="journalBody" rows="8" placeholder="Ce que j'ai pratiqué…&#10;Ce qui a bien fonctionné…&#10;Mon prochain petit défi…"></textarea><button class="btn btn-primary" id="saveJournal">Enregistrer l'entrée</button></div><div><h3 class="list-title">Entrées précédentes</h3><div id="journalEntries" class="journal-entries"></div></div></div>
+      </section>
+      <section id="view-settings" class="view">
+        <div class="intro-panel"><div><span class="eyebrow">PERSONNALISATION</span><h2>Réglages<br>de ton espace.</h2><p>Configure les paramètres du coach et gère tes données de progression.</p></div><div class="intro-badge">⚙<span>SETUP</span></div></div>
+        <div class="settings-card"><h3>Coach IA — API compatible OpenAI</h3><p>Pour activer les réponses générées par IA, ajoute une clé API et un endpoint compatible. La clé est enregistrée uniquement dans le stockage local de ce navigateur. Ne l'utilise pas sur un appareil partagé. Les appels se font depuis le téléphone : l'hébergeur de cette application ne reçoit pas la clé.</p><label for="apiEndpoint">Endpoint API</label><input id="apiEndpoint" type="url" placeholder="https://api.openai.com/v1/chat/completions"><label for="apiModel">Modèle</label><input id="apiModel" type="text" placeholder="gpt-4o-mini"><label for="apiKey">Clé API</label><input id="apiKey" type="password" placeholder="sk-…"><div class="settings-actions"><button class="btn btn-primary" id="saveApi">Enregistrer les paramètres</button><button class="btn btn-outline" id="testApi">Tester la connexion</button></div><p class="settings-feedback" id="apiFeedback" role="status"></p></div>
+        <div class="settings-card"><h3>Données et installation</h3><p>La progression, les notes et les entrées du journal sont conservées sur cet appareil. Utilise l'export pour sauvegarder tes données.</p><div class="settings-actions"><button class="btn btn-outline" id="exportData">Exporter mes données</button><label class="btn btn-outline file-label">Importer une sauvegarde<input type="file" id="importData" accept="application/json" hidden></label><button class="btn btn-danger" id="resetData">Réinitialiser la progression</button></div><p class="settings-feedback" id="dataFeedback" role="status"></p></div>
+        <div class="settings-card"><h3>Installer sur Android</h3><p>Une fois l'application hébergée en HTTPS, ouvre son adresse dans Chrome, puis menu ⋮ → « Installer l'application » ou « Ajouter à l'écran d'accueil ». Le mode hors ligne conserve l'interface et le programme. Les appels au Coach IA nécessitent Internet.</p></div>
+      </section>
+      <footer class="footer">COMMUNICATION MASTERY <span>·</span> Une pratique régulière, un progrès durable.</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
